@@ -75,34 +75,40 @@
     width: 100%;
 }
 
-/* Override carousel to 4-column grid */
+/* Override carousel to 4-column grid — !important needed to beat dropin inline styles */
 .product-recommendations .recommendations-carousel__content {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px 20px;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 32px 20px !important;
+    overflow: visible !important;
 }
 
 .product-recommendations .dropin-content-grid__content {
-    overflow: visible;
+    overflow: visible !important;
+    display: block !important;
+}
+
+.product-recommendations .recommendations-product-list__content {
+    overflow: visible !important;
 }
 
 @media (max-width: 1024px) {
     .product-recommendations .recommendations-carousel__content {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr) !important;
     }
 }
 
 @media (max-width: 720px) {
     .product-recommendations .recommendations-carousel__content {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 28px 14px;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 28px 14px !important;
     }
 }
 
 /* Hide dropin heading and carousel nav */
 .product-recommendations .recommendations-product-list__header,
 .product-recommendations .dropin-content-grid__actions {
-    display: none;
+    display: none !important;
 }
 
 /* Product card styling */
