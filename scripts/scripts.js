@@ -1,3 +1,4 @@
+import './mock-commerce.js';
 import {
   buildBlock,
   loadHeader,
