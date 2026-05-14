@@ -12,21 +12,30 @@
 
 /* stylelint-disable no-empty-source */
 :root, .dropin-design {
+  /* Maison Vera design tokens */
+  --mv-bg: #fff;
+  --mv-ink: #111;
+  --mv-muted: #6b6b6b;
+  --mv-line: #e8e5e0;
+  --mv-soft: #f5f2ec;
+  --mv-font: "DM Sans", -apple-system, "Helvetica Neue", arial, sans-serif;
+  --mv-gutter: clamp(20px, 4vw, 56px);
+
   /* Adobe Commerce Dropin design tokens */
   --color-brand-300: #6d6d6d;
-  --color-brand-500: #454545;
-  --color-brand-600: #383838;
-  --color-brand-700: #2b2b2b;
+  --color-brand-500: #111;
+  --color-brand-600: #333;
+  --color-brand-700: #111;
   --color-neutral-50: #fff;
   --color-neutral-100: #fafafa;
-  --color-neutral-200: #f5f5f5;
-  --color-neutral-300: #e8e8e8;
+  --color-neutral-200: #f5f2ec;
+  --color-neutral-300: #e8e5e0;
   --color-neutral-400: #d6d6d6;
   --color-neutral-500: #b8b8b8;
   --color-neutral-600: #8f8f8f;
   --color-neutral-700: #666;
-  --color-neutral-800: #3d3d3d;
-  --color-neutral-900: #292929;
+  --color-neutral-800: #111;
+  --color-neutral-900: #111;
   --color-positive-200: #eff5ef;
   --color-positive-500: #7fb078;
   --color-positive-800: #53824c;
@@ -88,7 +97,7 @@
   --spacing-huge: 120px;
   --spacing-xhuge: 144px;
   --spacing-xxhuge: 192px;
-  --type-base-font-family: adobe-clean, roboto, roboto-fallback, system-ui, sans-serif;
+  --type-base-font-family: "DM Sans", -apple-system, "Helvetica Neue", arial, sans-serif;
   --type-display-1-font: normal normal 300 6rem/7.2rem var(--type-base-font-family);
   --type-display-1-letter-spacing: 0.04em;
   --type-display-2-font: normal normal 300 4.8rem/5.6rem var(--type-base-font-family);
@@ -132,7 +141,7 @@
 
 /* fallback font */
 @font-face {
-  font-family: adobe-clean;
+  font-family: "DM Sans";
   size-adjust: 100%;
   src: local("Helvetica");
 }
@@ -298,23 +307,26 @@ button.button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   max-width: 100%;
   margin: 0;
-  border: var(--shape-border-width-3) solid transparent;
-  border-radius: var(--shape-border-radius-3);
-  padding: 0.5em 1.2em;
-  font: var(--type-button-2-font);
-  letter-spacing: var(--type-button-2-letter-spacing);
+  border: 1px solid var(--mv-ink);
+  border-radius: 0;
+  padding: 13px 24px;
+  font-family: var(--mv-font);
+  font-size: 13px;
+  letter-spacing: 0.06em;
   font-style: normal;
   font-weight: 500;
   line-height: 1.25;
   text-decoration: none;
-  background-color: var(--color-brand-500);
-  color: var(--color-neutral-50);
+  background-color: var(--mv-ink);
+  color: #fff;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 a.button[aria-disabled="true"],

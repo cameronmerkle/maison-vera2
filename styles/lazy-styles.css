@@ -1,1 +1,42 @@
-/* add global styles that can be loaded post LCP here */
+/* Maison Vera global refinements */
+
+/* Tighten section margins for homepage flow */
+main > .section {
+  margin: 0;
+}
+
+main > .section > div {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Topbar announcement */
+.section.topbar {
+  background: var(--mv-ink);
+  color: #fff;
+  text-align: center;
+  padding: 10px var(--mv-gutter);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.section.topbar > div {
+  max-width: unset;
+  padding: 0;
+}
+
+/* Override link colors for Maison Vera */
+a:not(.dropin-design a) {
+  color: var(--mv-ink);
+  font-weight: 400;
+}
+
+a:not(.dropin-design a):hover {
+  color: var(--mv-muted);
+}
+
+/* Selection color */
+::selection {
+  background: var(--mv-ink);
+  color: #fff;
+}

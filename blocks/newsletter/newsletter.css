@@ -1,0 +1,63 @@
+.newsletter-container .newsletter-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.newsletter-container {
+  margin: 0;
+}
+
+.newsletter {
+  background: var(--mv-soft);
+  padding: clamp(56px, 7vw, 96px) var(--mv-gutter);
+  text-align: center;
+}
+
+.newsletter h2 {
+  font-size: clamp(24px, 2.6vw, 32px);
+  font-weight: 500;
+  margin: 0 0 10px;
+}
+
+.newsletter .newsletter-desc {
+  color: var(--mv-muted);
+  margin: 0 auto 24px;
+  max-width: 44ch;
+}
+
+.newsletter form {
+  display: flex;
+  max-width: 440px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--mv-ink);
+}
+
+.newsletter form input {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  padding: 12px 0;
+  font-family: var(--mv-font);
+  font-size: 15px;
+  outline: none;
+  color: var(--mv-ink);
+}
+
+.newsletter form input::placeholder {
+  color: var(--mv-muted);
+}
+
+.newsletter form button {
+  font-family: var(--mv-font);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  padding: 0 4px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: var(--mv-ink);
+}
+
+.newsletter form button:hover {
+  color: var(--mv-muted);
+}

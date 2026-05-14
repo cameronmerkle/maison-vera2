@@ -16,7 +16,6 @@ import {
   initializeCommerce,
   applyTemplates,
   decorateLinks,
-  loadErrorPage,
   decorateSections,
   IS_UE,
   IS_DA,
@@ -147,12 +146,15 @@ async function loadEager(doc) {
   if (main) {
     try {
       await initializeCommerce();
+    } catch (e) {
+      console.warn('Commerce initialization skipped:', e.message || e);
+    }
+    try {
       decorateMain(main);
       applyTemplates(doc);
       await loadCommerceEager();
     } catch (e) {
-      console.error('Error initializing commerce configuration:', e);
-      loadErrorPage(418);
+      console.warn('Commerce eager loading skipped:', e.message || e);
     }
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);
