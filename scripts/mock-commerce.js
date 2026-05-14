@@ -73,4 +73,12 @@ window.fetch = async (resource, init) => {
   return originalFetch(resource, init);
 };
 
+window.adobeDataLayer = window.adobeDataLayer || [];
+window.adobeDataLayer.push({
+  pageContext: {
+    pageType: 'CMS',
+    pageName: 'Home',
+  },
+});
+
 export { MOCK_PRODUCTS };
