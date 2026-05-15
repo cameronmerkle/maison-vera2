@@ -73,7 +73,10 @@ const PRODUCT_DETAILS = {
   },
 };
 
-function buildPdpProduct(sku) {
+function buildPdpProduct(rawSku) {
+  const sku = Object.keys(PRODUCT_DETAILS).find(
+    (k) => k.toLowerCase() === rawSku?.toLowerCase(),
+  ) || rawSku;
   const detail = PRODUCT_DETAILS[sku];
   if (!detail) return null;
   return {
@@ -222,7 +225,8 @@ const EMPTY_RESPONSE = { data: {} };
 
 function extractSkuFromQuery(url, body) {
   const skuMatch = body?.match(/"sku"\s*:\s*"([^"]+)"/)
-    || url.match(/sku["%3A:]+([A-Z]+-\d+)/i);
+    || url.match(/sku["%3A:]+([a-zA-Z]+-\d+)/i)
+    || url.match(/["%22]([mM][vV]-\d+)["%22]/);
   return skuMatch?.[1] || null;
 }
 
