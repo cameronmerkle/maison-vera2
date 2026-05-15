@@ -244,6 +244,8 @@ window.fetch = async (resource, init) => {
     url = resource.href || resource.url;
   }
 
+  window.__mockLog = window.__mockLog || [];
+
   if (url.includes('localhost:9999')) {
     let body = '';
     if (init?.body && typeof init.body === 'string') {
@@ -252,8 +254,16 @@ window.fetch = async (resource, init) => {
       try { body = await resource.clone().text(); } catch { /* empty */ }
     }
 
+    window.__mockLog.push({
+      url: url.substring(0, 200),
+      bodyLen: body.length,
+      bodyPreview: body.substring(0, 200),
+      resourceType: resource?.constructor?.name,
+    });
+
     const isRecsQuery = url.includes('ecommend') || body.includes('ecommend');
     if (isRecsQuery) {
+      window.__mockLog.push({ action: 'returning RECS' });
       return new Response(JSON.stringify(MOCK_RECS), {
         status: 200,
         headers: { 'Content-Type': 'application/json' },
@@ -262,8 +272,11 @@ window.fetch = async (resource, init) => {
 
     const sku = extractSkuFromQuery(url, body)
       || window.location.pathname.match(/\/products\/[\w|-]+\/([\w|-]+)$/)?.[1];
+    window.__mockLog.push({ action: 'PDP check', sku, pathname: window.location.pathname });
     if (sku) {
-      return new Response(JSON.stringify(buildPdpResponse(sku)), {
+      const resp = buildPdpResponse(sku);
+      window.__mockLog.push({ action: 'returning PDP', productName: resp?.data?.productSearch?.items?.[0]?.productView?.name });
+      return new Response(JSON.stringify(resp), {
         status: 200,
         headers: { 'Content-Type': 'application/json' },
       });
@@ -274,6 +287,8 @@ window.fetch = async (resource, init) => {
       headers: { 'Content-Type': 'application/json' },
     });
   }
+
+  window.__mockLog.push({ passthrough: url.substring(0, 100) });
 
   return originalFetch(resource, init);
 };
