@@ -260,9 +260,9 @@ window.fetch = async (resource, init) => {
       });
     }
 
-    const isPdpQuery = body.includes('productSearch') || url.includes('productSearch');
-    if (isPdpQuery) {
-      const sku = extractSkuFromQuery(url, body);
+    const sku = extractSkuFromQuery(url, body)
+      || window.location.pathname.match(/\/products\/[\w|-]+\/([\w|-]+)$/)?.[1];
+    if (sku) {
       return new Response(JSON.stringify(buildPdpResponse(sku)), {
         status: 200,
         headers: { 'Content-Type': 'application/json' },
