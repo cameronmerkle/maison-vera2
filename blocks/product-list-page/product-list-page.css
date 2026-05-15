@@ -121,3 +121,90 @@
         justify-content: flex-end;
     }
 }
+
+/* stylelint-disable no-descending-specificity */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* Maison Vera PLP overrides */
+.product-list-page-container .product-list-page-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(24px, 4vw, 48px) var(--mv-gutter) clamp(56px, 7vw, 96px);
+}
+
+/* Top toolbar layout — results + sort on one row */
+.block.product-list-page .search__wrapper {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    grid-template-areas:
+        "result-info product-sort"
+        "view-facets view-facets"
+        "facets facets"
+        "product-list product-list"
+        "pagination pagination";
+    grid-template-columns: 1fr auto;
+}
+
+.block.product-list-page .search__result-info {
+    font-size: 13px;
+    color: var(--mv-muted);
+    margin: 0;
+    padding: 0 0 24px;
+}
+
+.block.product-list-page .search__product-sort {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0 0 24px;
+}
+
+/* Product grid — 4 columns */
+.block.product-list-page .dropin-product-list-card {
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.block.product-list-page .dropin-product-list-card__image {
+    aspect-ratio: 4 / 5;
+    background: var(--mv-soft);
+    overflow: hidden;
+}
+
+.block.product-list-page .dropin-product-list-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.block.product-list-page .dropin-product-list-card__title a {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--mv-font);
+    text-decoration: none;
+}
+
+.block.product-list-page .dropin-product-list-card__price {
+    font-size: 14px;
+    color: var(--mv-muted);
+    font-family: var(--mv-font);
+}
+
+@media only screen and (min-width: 768px) {
+    .block.product-list-page .search__wrapper {
+        grid-template-areas:
+            "result-info product-sort"
+            "view-facets view-facets"
+            "facets facets"
+            "product-list product-list"
+            "pagination pagination";
+        grid-template-columns: 1fr auto;
+    }
+
+    .block.product-list-page .search__facets {
+        margin-right: 0;
+    }
+}
