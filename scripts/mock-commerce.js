@@ -165,14 +165,10 @@ function buildPdpProduct(rawSku) {
 
 function buildPdpResponse(sku) {
   const product = buildPdpProduct(sku);
-  if (!product) return { data: { productSearch: { items: [] } } };
+  if (!product) return { data: { products: [] } };
   return {
     data: {
-      productSearch: {
-        items: [{
-          productView: product,
-        }],
-      },
+      products: [product],
     },
   };
 }
